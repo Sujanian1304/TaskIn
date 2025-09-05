@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
+    <script src="https://kit.fontawesome.com/106cc8f62a.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="todo.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Orbitron:wght@400..900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&family=Orbitron:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Orbitron:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <main>
+        <nav>
+             <div class="navbar">
+            <div class="logo">
+                <img id="logo-img" src="/public/timage.png" height="38px" width="38px">
+                <p id="logo-name">TASKIN</p>
+            </div>
+            <div class="signin-buttons">
+                 <a class="button">Sign In</a>
+                 <button id="signup" >
+                    <p id="signup-txt"> Sign Up Free</p>
+                   <div id="arrow"><img src="/public/6image.png" height="30px" width="30px" ></div>
+                 </button>
+            </div>
+        </div>
+        </nav>
+        <div id="container">
+       <div id="hero-section">
+             <div class="main-content">
+                     <div id="intro-bar">
+                         <p id="greeting"></p>
+                         <div id="date"></div>
+                     </div>
+                     <div class="todo-container">
+                        <div class="todo-column">
+                            <div class="container-header">
+                                <p><i class="fa-solid fa-calendar-check"></i>
+                                    All To-Dos</p>
+                                    <div >
+                                        <button class="addtodo-but">Add Todo
+                                            <i class="fa-solid fa-circle-plus"></i>
+                                        </button>
+                                    </div>
+                            </div>
+                            <div class="todo-task">
+                                 <span class="no-task">
+                                    No Tasks to Display!!! Create a task using Add Todo <i class="fa-solid fa-circle-plus"></i> Button!!
+                                 </span>
+                            </div>
+                        </div>
+                        <div class="todo-column">
+                            <div class="container-header">
+                                <p><i class="fa-solid fa-hourglass-half"></i>
+                                    In Progess</p>
+                                    <div>
+                                        <button class="addtodo-but">Add Todo
+                                            <i class="fa-solid fa-circle-plus"></i>
+                                        </button>
+                                    </div>
+                            </div>
+                             <div class="todo-task">
+                                 <span class="no-task">
+                                   No Tasks in Progress!!! Add a task by Dragging and Dropping here or by Editing its Status to 'In Progress'.
+                                 </span>
+                            </div>
+                        </div>
+                        <div class="todo-column">
+                            <div class="container-header">
+                                <p><i class="fa-solid fa-square-check"></i>
+                                    Done</p>
+                                    <div >
+                                        <button class="addtodo-but">Add Todo
+                                            <i class="fa-solid fa-circle-plus"></i>
+                                        </button>
+                                    </div>
+                            </div>
+                             <div class="todo-task">
+                                 <span class="no-task">
+                                  No Tasks Completed!!! Add a task by Dragging and Dropping here or by marking its Status to Complete.
+                                 </span>
+                            </div>
+                        </div>
+                     </div>
+             </div>
+       </div>
+       </div>
+    </main>
+    <script>
+         const months = [
+  "January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+   ];
+        const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        let now=new Date();
+        let hour=now.getHours();
+        let date=now.getDate();
+        let dayindex=now.getDay();
+        let month=now.getMonth();
+        let year=now.getFullYear();
+        let greeting="";
+       if(hour>=5&&hour<12) {
+                greeting="Good Morning!";
+         } else if(hour>=12&&hour<17) {
+                greeting="Good Afternoon!";
+         }else if(hour>=17&&hour<21) {
+               greeting="Good Evening!";
+        }else{
+              greeting="Good Night!";
+        }
+      document.querySelector("#date").innerHTML="Today, "+daysOfWeek[dayindex]+" "+months[month]+" "+"0"+date+" "+year;
+        let username="";
+        const token=localStorage.getItem("authToken");
+        async function myinfo(){
+            let response=await axios.get("http://localhost:3000/todo/me",{
+                headers:{
+                    Authorization :token,
+                }
+            });
+             username=response.data.name;
+              document.getElementById("greeting").textContent = greeting+", "+username;
+        }
+        myinfo();
+       
+    </script>
+</body>
+</html>

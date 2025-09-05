@@ -1,0 +1,158 @@
+body {
+    margin: 0;
+  height: 100vh;
+  background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.5) 0%, transparent 60%),
+              radial-gradient(circle at 80% 80%, rgba(200,180,255,0.4) 0%, transparent 70%),
+              linear-gradient(135deg, #f2e4f4 0%, #f4e7f4 50%, #f6ecf4 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+.navbar{
+    background-color: #ffffff;
+    box-shadow: 0px 0px 2px 1px #ffffff;
+  margin-right: 35px;
+  margin-left: 35px;
+  border-radius: 43px;
+  margin-top: 15px;
+  display: flex;
+  position: fixed;
+  z-index: 3;
+  width: 95%;
+  justify-content: space-between;
+   backdrop-filter: blur(6px);
+}
+.signin-buttons{
+margin-right: 6px;
+  display: flex;
+  gap: 10px;
+}
+.button{
+    margin-top: 6px;
+    padding: 14px 14px 14px 14px;
+    border-radius: 25px;
+    font-family: "space grotesk",sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+#signup{
+    padding: 10px 19px 0px 19px;
+  border-radius: 25px;
+  margin-top: 4px;
+  background-color: black;
+  color: #ffffff;
+  display: flex;
+  margin-bottom: 5px;
+  gap: 4px;
+  cursor: pointer;
+}
+#signup-txt{
+    margin: 0;
+  padding: 5px;
+  font-size: .9rem;
+  font-weight: 590
+}
+#arrow{
+    background-color: #ffffff;
+    border-radius: 15px;
+    height: 30px;
+    width: 30px;
+}
+.logo{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: 1px;
+    margin-bottom: -3px;
+}
+#logo-img{
+   margin-left: 10px;
+}
+#logo-name{
+    font-family: "orbitron",sans-serif;
+    font-weight: 800;
+    font-size: 1.3rem;
+    color: black;
+}
+#hero-section{
+    display: flex;
+    justify-content: center;
+}
+#signup-bar{
+    height: 33rem;
+  width: 32rem;
+  background-color: white;
+  margin-top: 108px;
+  border-radius: 29px;
+}
+#signup-header{
+    display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+#signup-heading{
+    display: flex;
+  justify-content: center;
+  align-items: center;
+    font-family: "space grotesk",sans-serif;
+  font-size: 44px;
+  line-height: 60px;
+  gap: 10px;
+  font-weight: 600;
+  margin-bottom: -12px;
+  flex-direction: column;
+}
+.account-txt{
+   background: radial-gradient(circle at 20% 20%, rgba(255,255,255,0.4), transparent 70%),
+            linear-gradient(135deg, #f4d7f7 0%, #c4b7f7 50%, #b7d8f7 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-top: -30px;
+}
+#signin{
+    display: flex;
+    gap: 10px;
+    font-family: "poppins",sans-serif !important;
+    font-size: 18px;
+    font-weight: 500;
+}
+#signinbutton{
+    padding-top: 17px;
+}
+#top-heading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#input{
+    display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  margin-top:32px;
+}
+.input-info{
+  padding:20px 135px 20px 38px;
+  border-radius: 20px;
+  font-family: "space grotesk",sans-serif;
+  font-weight: 500;
+  font-size: 1.3rem;
+  color: black;
+background: #f5f6fa;
+}
+#signup-but{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+#signup-button1{
+    padding: 18px 190px 18px 190px;
+  border-radius: 18px;
+  font-size: 1.4rem;
+  font-family: "space grotesk",sans-serif;
+  background-color:#f5f6fa;
+}
