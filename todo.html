@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TASKIN</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.7.7/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.9.6/lottie.min.js"></script>
+
     <script src="https://kit.fontawesome.com/106cc8f62a.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="todo.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,14 +31,15 @@
                 <p id="logo-name">TASKIN</p>
             </div>
             <div class="signin-buttons">
-                 <a class="button">Sign In</a>
-                 <button id="signup" >
-                    <p id="signup-txt"> Sign Up Free</p>
-                   <div id="arrow"><img src="/public/6image.png" height="30px" width="30px" ></div>
+                <button id="twitter"><img src="/public/16image.png" height="30px" width="30px"> <a href="https://x.com/PiyushK11999452" >Twitter</a></button>
+                 <button id="signup" onclick="opengithub()" >
+                    <img src="/public/15image.png" height="30px" width="30px">
+                    <p id="signup-txt">Github</p>
                  </button>
             </div>
         </div>
         </nav>
+        <div id="lottie-animation" style="width: 300px; height: 300px;"></div>
         <div id="modal" class="hiding">
                    <div id="task-modal">
                          <form>
@@ -78,7 +81,7 @@
                      </div>
                      <div class="todo-container">
                         <div class="todo-column">
-                            <div class="container-header">
+                            <div id="all-todo1" class="container-header">
                                 <p><i class="fa-solid fa-calendar-check"></i>
                                     All To-Dos</p>
                                     <div >
@@ -90,11 +93,13 @@
                             <div id="all-todo" class="todo-task">
                                  <span id="all-todos" class="no-task">
                                     No Tasks to Display!!! Create a task using Add Todo <i class="fa-solid fa-circle-plus"></i> Button!!
+                                    <div id="lottie-animation1" style="width: 260px; height: 260px;"></div>
                                  </span>
+
                             </div>
                         </div>
-                        <div class="todo-column">
-                            <div class="container-header">
+                        <div  class="todo-column">
+                            <div  id="inprogress-todo-task1" class="container-header">
                                 <p><i class="fa-solid fa-hourglass-half"></i>
                                     In Progess</p>
                                     <div>
@@ -106,11 +111,12 @@
                              <div id="inprogress-todo-task" class="todo-task">
                                  <span id="inprogress-todo" class="no-task">
                                    No Tasks in Progress!!! Add a task by Dragging and Dropping here or by Editing its Status to 'In Progress'.
+                                   <div id="lottie-animation2" style="width: 260px; height: 260px;"></div>
                                  </span>
                             </div>
                         </div>
-                        <div class="todo-column">
-                            <div class="container-header">
+                        <div  class="todo-column">
+                            <div id="done-todo-task1" class="container-header">
                                 <p><i class="fa-solid fa-square-check"></i>
                                     Done</p>
                                     <div >
@@ -122,6 +128,7 @@
                              <div id="done-todo-task" class="todo-task">
                                  <span id="done-todo" class="no-task">
                                   No Tasks Completed!!! Add a task by Dragging and Dropping here or by marking its Status to Complete.
+                                  <div id="lottie-animation3" style="width: 260px; height: 260px;"></div>
                                  </span>
                             </div>
                         </div>
@@ -131,6 +138,9 @@
        </div>
     </main>
     <script>
+        function opengithub(){
+            window.location.href="https://github.com/Sujanian1304";
+        }
          const months = [
   "January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
@@ -266,6 +276,7 @@
             console.error("Failed to update todo:", err);
              alert("Error updating todo. Please try again.");
            }
+            location.reload();
            }
            async function removeTodo(parent){
               let todoId = parent.getAttribute("data-id");
@@ -281,6 +292,7 @@
               console.error("Failed to delete todo:", err);
              alert("Error delete todo. Please try again.");
            }
+            location.reload();
         }
             let response=await axios.get("http://localhost:3000/todo/me",{
                 headers:{
@@ -325,7 +337,36 @@
                        },
                      });
                      popup.style.display="none";
+                      location.reload();
        }
+       var animation = lottie.loadAnimation({
+    container: document.getElementById('lottie-animation'), 
+    renderer: 'svg', 
+    loop: true, 
+    autoplay: true, 
+    path: '2anime.json' 
+  });
+  var animation = lottie.loadAnimation({
+    container: document.getElementById('lottie-animation1'), 
+    renderer: 'svg', 
+    loop: true, 
+    autoplay: true, 
+    path: '3anime.json' 
+  });
+  var animation = lottie.loadAnimation({
+    container: document.getElementById('lottie-animation2'), 
+    renderer: 'svg', 
+    loop: true, 
+    autoplay: true, 
+    path: '3anime.json' 
+  });
+  var animation = lottie.loadAnimation({
+    container: document.getElementById('lottie-animation3'), 
+    renderer: 'svg', 
+    loop: true, 
+    autoplay: true, 
+    path: '3anime.json' 
+  });
     </script>
 </body>
 </html>

@@ -28,14 +28,20 @@
                 <p id="logo-name">TASKIN</p>
             </div>
             <div class="signin-buttons">
-                 <a class="button">Sign In</a>
-                 <button id="signup" >
-                    <p id="signup-txt"> Sign Up Free</p>
+                 <a class="button" href="signup.html">Sign Up</a>
+                 <button id="signup" onclick="home()" >
+                    <p id="signup-txt">Go Home</p>
                    <div id="arrow"><img src="/public/6image.png" height="30px" width="30px" ></div>
                  </button>
             </div>
         </div>
         </nav>
+        <div class="illustration">
+                  <img src="/public/14image.svg" alt="Task Illustration" />
+                </div>
+         <div class="illustration2">
+                  <img src="/public/15image.svg" alt="Task Illustration" />
+                </div>
         <div id="hero-section">
              <div id="signup-bar">
                 <div id="top-heading">
@@ -68,6 +74,9 @@
         </div>
     </main>
   <script>
+    function home(){
+        window.location.href="index.html";
+    }
     async function login(){
         let email=document.querySelector("#input-email").value;
         let password=document.querySelector("#input-password").value;
