@@ -1,13 +1,22 @@
 body {
-    background-image: url("/public/1image.png");
+   
      
     min-height: 100vh;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: linear-gradient(120deg, #fbc2eb, #ea8080);
+  background-size: 300% 300%;
+  animation: gradientFlow 10s ease infinite;
 }
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+
 .navbar{
-    background-color: #ffffff;
-    box-shadow: 0px 0px 2px 1px #ffffff;
   margin-right: 35px;
   margin-left: 35px;
   border-radius: 43px;
@@ -17,7 +26,9 @@ body {
   z-index: 3;
   width: 95%;
   justify-content: space-between;
-   backdrop-filter: blur(6px);
+    background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 50px;
 }
 .signin-buttons{
 margin-right: 6px;
@@ -28,28 +39,25 @@ margin-right: 6px;
     margin-top: 6px;
     padding: 14px 14px 14px 14px;
     border-radius: 25px;
-    font-family: "space grotesk",sans-serif;
+    font-family: "Montserrat",sans-serif;
     font-size: 1.25rem;
     font-weight: 600;
+    color: black;
 }
 #signup{
-    padding: 10px 19px 0px 19px;
-  border-radius: 25px;
-  margin-top: 4px;
+    padding: 0px 10px 0px 14px;
+  border-radius: 42px;
+  margin: 6px;
   background-color: black;
   color: #ffffff;
   display: flex;
-  margin-bottom: 5px;
   gap: 4px;
   cursor: pointer;
-}
-#signup-txt{
-    margin: 0;
-  padding: 5px;
+  align-items: center;
   font-size: .9rem;
-  font-weight: 590;
+  font-weight: 600;
   color:#fff;
-  font-family: "space grotesk",sans-serif;
+  font-family: "Montserrat",sans-serif;
 }
 #arrow{
     background-color: #ffffff;
@@ -79,11 +87,29 @@ margin-right: 6px;
     text-align: center;
     flex-direction: column;
     align-items: center;
+
+  }
+  .illustration img {
+  max-width: 300px;
+  width: 100%;
+  transform: translateX(328px) translateY(-159px);
+  z-index: 2;
+  position: absolute;
+}
+  .illustration2 img {
+max-width: 300px;
+  width: 100%;
+  z-index: -1;
+  position: absolute;
+  transform: translateX(-644px) translateY(-119px);
 }
 #main-heading{
-     font-size: 3.6rem;
-     font-family: "space grotesk",sans-serif;
-     font-weight: 700;
+background: linear-gradient(90deg, #6a11cb, #2575fc);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 3.2rem;
+  font-weight: 800;
+     font-family: "Space Grotesk",sans-serif;
      color: #000000;
      display: flex;
      justify-content: center;
@@ -92,11 +118,32 @@ margin-right: 6px;
      max-width: 900px;
 }
 #sub-heading{
-    font-family: "space grotesk",sans-serif;
+    font-family: "DM Sans",sans-serif;
      color: #000000;
     font-size: 1.1rem;
     max-width: 633px;
 }
+.fade-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s ease-out forwards;
+}
+
+.fade-up:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.fade-up:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 #input{
     display:flex;
     justify-content: center;
@@ -125,7 +172,27 @@ margin-right: 6px;
   transition: 0.3s ease;
   display: flex;
   gap: 3px;
+  align-items: center;
 }
+.pulse-button {
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(220, 61, 140, 0.4);
+  }
+  70% {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 10px rgba(138, 43, 226, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(138, 43, 226, 0);
+  }
+}
+
 #input-box{
   font-size: 1.2rem;
   border-radius: 29px;

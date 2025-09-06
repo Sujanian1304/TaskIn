@@ -78,6 +78,7 @@
          if(response.status==200){
             alert("you are signed in");
             let token=response.data.token;
+            console.log(token);
             localStorage.setItem("authToken",token);
             window.location.href="/todo.html";
          }

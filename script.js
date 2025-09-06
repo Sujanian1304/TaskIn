@@ -9,6 +9,7 @@ const mongoose=require("mongoose");
 mongoose.connect("mongodb+srv://piyush1304kumar:R2AXPWhWTQpV2v3i@cluster0.tl8runz.mongodb.net/Todo-project");
 app.use("/user",userRouter);
 app.use("/todo",TodoRouter);
+console.log("Todo routes mounted");
 app.listen(3000,()=>{
     console.log("listening in route 3000");
 })
