@@ -1,12 +1,12 @@
-const express=require("express");
-const userRouter=express.Router();
-const jwt=require("jsonwebtoken");
-const secretkey="ilovevan";
-const {z}=require("zod");
-const b=require("bcrypt");
-const {Usermodel}=require("../db");
+import express from "express";
+import jwt from "jsonwebtoken";
+import { z } from "zod";
+import bcrypt from "bcrypt"; 
+import { Usermodel } from "../db.js";
 
 
+const userRouter = express.Router();
+import { Secretkey } from "../script.js"; 
 userRouter.post("/signup",async (req,res)=>{
     const reqbody=z.object({
         email:z.string().min(3).max(100).email(),
@@ -64,6 +64,4 @@ userRouter.post("/signin",async (req,res)=>{
         res.status(403).json({ message: "Incorrect creds"});
     }
 })
-module.exports={
-    userRouter,
-}
+export { userRouter };

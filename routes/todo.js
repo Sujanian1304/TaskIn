@@ -1,8 +1,8 @@
-const express=require("express");
-const TodoRouter=express.Router();
-const jwt=require("jsonwebtoken");
-const secretkey="ilovevan";
-const { Todomodel, Usermodel }=require("../db");
+import express from "express";
+const TodoRouter = express.Router();
+import jwt from "jsonwebtoken";
+import { Secretkey } from "../script.js"; 
+import { Todomodel, Usermodel } from "../db.js";
 function middleware(req,res,next){
    let token=req.headers.authorization;
    let response=jwt.verify(token,secretkey);
@@ -77,6 +77,4 @@ TodoRouter.delete("/deletetodo/:id", middleware, async (req, res) => {
     }
 });
 
-module.exports={
-   TodoRouter,
-}
+export { TodoRouter };

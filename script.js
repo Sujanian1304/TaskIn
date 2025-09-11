@@ -1,24 +1,34 @@
-const express=require("express");
-const path =require("path");
+import express from "express";
+import path from "path";
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+import cors from "cors";
+import dotenv from "dotenv";
+dotenv.config();
 const app=express();
-const { fileURLToPath } = require('url');
-const { dirname }= ('path');
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 app.use(express.json());
-const cors=require("cors");
 app.use(cors());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use(express.static(__dirname));
 
-const {userRouter}=require("./routes/user");
-const {TodoRouter}=require("./routes/todo");
-const mongoose=require("mongoose");
-mongoose.connect("mongodb+srv://piyush1304kumar:R2AXPWhWTQpV2v3i@cluster0.tl8runz.mongodb.net/Todo-project");
+import {userRouter} from "./routes/user.js";
+import {TodoRouter} from "./routes/todo.js";
+import mongoose from "mongoose";
+const mongoUrl = process.env.MONGO_URL;
+const Secretkey = process.env.JWT_SECRET;
+mongoose.connect(mongoUrl, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log("Connected to MongoDB"))
+.catch((err) => console.error("MongoDB connection error:", err));
 app.use("/user",userRouter);
 app.use("/todo",TodoRouter);
 console.log("Todo routes mounted");
 const PORT = process.env.PORT || 3002;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+export { Secretkey};
